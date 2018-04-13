@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Friend from './Friend';
+import InputFriend from './InputFriend';
 import axios from 'axios';
 
 const baseURL = 'http://localhost:5000/friends';
@@ -32,10 +33,12 @@ export default class FriendsList extends Component {
       <Friend key={index} friend={friend} />
     ));
 
+    if (this.state.loading) return <h2>LOADING...</h2>
+
     return (
-      <div>
-        <h1>Friends List</h1>
+      <div className="Container">
         <ul>{friends}</ul>
+        <InputFriend />
       </div>
     );
   }
