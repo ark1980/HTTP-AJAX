@@ -8,17 +8,16 @@ const baseURL = 'http://localhost:5000/friends';
 export default class FriendsList extends Component {
   state = {
     friends: [],
-    loading: true
+    loading: true,
   };
 
   componentDidMount() {
     axios
       .get(baseURL)
       .then(response => {
-        console.log(response.data);
         this.setState({
           friends: response.data,
-          loading: false
+          loading: false,
         });
       })
       .catch(error =>
@@ -28,17 +27,37 @@ export default class FriendsList extends Component {
       );
   }
 
+  addFriend = (name, age, email, id) => {
+    const newFriend = {
+      name,
+      age,
+      email,
+      id
+    } 
+    this.setState({
+      friends: [...this.state.friends, newFriend]
+    })
+  }
+
   render() {
-    const friends = this.state.friends.map((friend, index) => (
-      <Friend key={index} friend={friend} />
-    ));
-
-    if (this.state.loading) return <h2>LOADING...</h2>
-
+    if (this.state.loading) return <h2>LOADING...</h2>;
+    
     return (
       <div className="Container">
-        <ul>{friends}</ul>
-        <InputFriend />
+        <ul>
+          {
+            this.state.friends.map(friend => (
+              <Friend 
+                friend={friend}
+                key={friend.id}  
+              />
+            ))
+          }
+        </ul>
+        <InputFriend 
+          submitNewFriend={this.addFriend}
+          newId={Number([this.state.friends[this.state.friends.length -1].id])}
+        />
       </div>
     );
   }

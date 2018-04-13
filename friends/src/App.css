@@ -9,22 +9,37 @@
 .Container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  padding: 50px;
-}
-
-.Friends-list {
-  display: flex;
-  justify-content: space-around;
+  padding: 1.5rem;
 }
 
 .Friend {
   border: 1px silver solid;
-  margin: 10px;
+  margin: 0 20px 20px 0;
   padding: 10px;
   border-radius: 5px;
   width: 300px;
   -webkit-box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.5);
   -moz-box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.5);
   box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.5);
+}
+
+.Input-friends {
+  display: flex;
+  flex-direction: column;
+}
+
+.Input-friends input {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.Input-friends button {
+  width: 130px;
+  height: 40px;
+  margin: 10px;
+  background-color: aquamarine;
+  border-radius: 5px;
+  color: darkolivegreen;
 }
